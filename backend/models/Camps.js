@@ -59,4 +59,4 @@ const campSchema = new mongoose.Schema({
 });
 
 const Camps = mongoose.model("Camps",campSchema);
-module.exports=Camps;
+module.exports = Camps;
