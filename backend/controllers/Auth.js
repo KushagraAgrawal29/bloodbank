@@ -114,3 +114,48 @@ exports.login = async(req,res) => {
     };
 };
 
+exports.logout = async(req,res) => {
+    try {
+        res.cookie("token","",{
+            httpOnly:true,
+            secure:true,
+            sameSite:"none",
+        })
+        .send();
+        console.log("logged out");
+    } 
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            success: false,
+            message: "Server Error, Logout unsuccessful",
+        });
+    };
+};
+
+exports.loggedIn = async(req,res) => {
+    try {
+        const token = req.cookies.token;
+        if(!token){
+            return res.status(400).json({
+                auth:false,
+            });
+        }
+
+        const verified = jwt.verify(token,process.env.JWT_SECRET);
+        const user = await (verified.type == "bank" ? Bloodbank : User).findOne({
+            _id:verified._user,
+        },{ password: 0, donations: 0, requests: 0, stock: 0, __v: 0});
+        console.log("Logged In");
+        res.send({
+            auth:true,
+            user:user
+        });
+    } 
+    catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            auth:false,
+        })
+    }
+}
