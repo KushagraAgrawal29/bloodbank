@@ -95,3 +95,24 @@ exports.deleteStock = async (req,res) => {
     }
 };
 
+exports.getStock = async(req,res) => {
+    try{
+        const data = await Bloodbank.findOne(
+            { _id: req.user },
+            { _id: 0,stock: 1 }
+        )
+        res.status(200).json({
+            success : true,
+            message:"Stock data fetched successfully",
+            data
+        })
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).json({
+            success:false,
+            message:"Error fetching stock data",
+        })
+    }
+}
+
