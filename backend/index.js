@@ -1,17 +1,15 @@
 const express = require("express");
 const cors = require("cors");
 
-const mongoose = require("mongoose");
-
 const cookieParser = require("cookie-parser");
 
 const app = express();
 const database = require("./config/database");
 
-const userRoutes = require("./routers/userRouter");
-const bankRoutes = require("./routers/bankRouter");
-const campRoutes = require("./routers/campRouter");
-const authRoutes = require("./routers/authRouter");
+const userRoutes = require("./routes/userRouter");
+const bankRoutes = require("./routes/bankRouter");
+const campRoutes = require("./routes/campRouter");
+const authRoutes = require("./routes/authRouter");
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -35,9 +33,9 @@ app.use(
 
 //routes
 app.use("/api/v1/auth",authRoutes);
-app.use("/api/v1/auth",bankRoutes);
-app.use("/api/v1/auth",campRoutes);
-app.use("/api/v1/auth",userRoutes);
+app.use("/api/v1/bank",bankRoutes);
+app.use("/api/v1/camp",campRoutes);
+app.use("/api/v1/user",userRoutes);
 
 //default route
 app.get("/",(req,res) => {

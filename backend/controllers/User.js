@@ -3,7 +3,7 @@ const Bloodbank = require("../models/Bloodbank");
 const Donations = require("../models/BloodDonations");
 const Requests = require("../models/BloodRequests");
 
-exports.getUser = async (req, res) => {
+exports.getUser = async(req, res) => {
   try {
     const user = await User.find({
       _id: req.user,
@@ -15,7 +15,8 @@ exports.getUser = async (req, res) => {
       message: "User data fetched successfully",
       user,
     });
-  } catch (error) {
+  } 
+  catch (error) {
     console.log("Error in getting user details : ", error);
     return res.status(500).json({
       success: false,
