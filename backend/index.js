@@ -34,10 +34,11 @@ app.use(
 	})
 );
 
-app.use("/auth",require("./routers/authRouter"));
-app.use("/user", require("./routers/userRouter"));
-app.use("/bank", require("./routers/bankRouter"));
-app.use("/camps", require("./routers/campRouter"));
+//routes
+app.use("/api/v1/auth",authRoutes);
+app.use("/api/v1/auth",bankRoutes);
+app.use("/api/v1/auth",campRoutes);
+app.use("/api/v1/auth",userRoutes);
 
 //default route
 app.get("/",(req,res) => {
