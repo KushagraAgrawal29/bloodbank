@@ -246,6 +246,7 @@ exports.updateBloodbankDetail = async (req, res) => {
           return res.status(200).json({
             success: true,
             message: "Bloodbank detail updated successfully.",
+            user
           });
         }
       }
