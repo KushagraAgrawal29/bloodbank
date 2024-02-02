@@ -1,4 +1,5 @@
-const { User, Bloodbank } = require("../models/models");
+const User = require("../models/User");
+const Bloodbank = require("../models/Bloodbank");
 const bcrypt = require("bcrypt");
 
 exports.registerUser = async(req,res) => {
