@@ -24,6 +24,27 @@ exports.getUser = async(req, res) => {
   }
 };
 
+exports.getBank = async (req,res) => {
+  try{
+    const user = await Bloodbank.find({
+      _id: req.user,
+    });
+    console.log(user);
+    return res.status(200).json({
+      success: true,
+      message: "Bnak data fetched successfully",
+      user,
+    });
+  }
+  catch(error){
+    console.log("Error in getting user details : ", error);
+    return res.status(500).json({
+      success: false,
+      message: "Error getting User Details",
+    });
+  }
+}
+
 
 exports.createDonation = async(req, res) => {
   try {
@@ -38,7 +59,7 @@ exports.createDonation = async(req, res) => {
     console.log(newDonation);
     console.log(saved);
 
-    const updatedData = await Bloodbank.update(
+    const updatedData = await Bloodbank.updateOne(
       {
         _id: req.body.bankId,
       },
