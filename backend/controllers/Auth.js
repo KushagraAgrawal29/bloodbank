@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const Bloodbank = require("../models/Bloodbank");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 exports.registerUser = async(req,res) => {
     try {
@@ -17,14 +18,15 @@ exports.registerUser = async(req,res) => {
             if(existingUser){
                 return res.status(400).json({
                     success:false,
-                    message:"User with this email id is already registered",
+                    message:"User with this phone number is already reegistered",
                 });
             }
 
             //hashing password
-
             const salt = await bcrypt.genSalt();
+            console.log(salt);
             const passwordHash = await bcrypt.hash(req.body.password,salt);
+            console.log(passwordHash);
             req.body.password = passwordHash;
 
             //save new user account to db
@@ -36,17 +38,20 @@ exports.registerUser = async(req,res) => {
 
             //Send token in http cookie only
 
-            res.cookie("token",token, {
+            return res.cookie("token",token, {
                 httpOnly: true,
                 secure: true,
                 sameSite:"none",
-            }).send();
+            }).status(200).json({
+                success:true,
+                message:"User registered successfully"
+            });
     } 
     catch (error) {
         console.log(error);
         res.status(500).json({
             success:false,
-            message:"Unable to register user"
+            message:"Unable to register user",
         })
     }
 }
@@ -74,19 +79,23 @@ exports.login = async(req,res) => {
         if(!existingUser){
             return res.status(401).json({
                 success:false,
-                message:"Wrong username or password",
+                message:"Wrong phone or password",
             });
         }
+
+        console.log(existingUser);
 
         const correctPassword = await bcrypt.compare(
             password,
             existingUser.password
         )
 
+        // console.log("I am here");
+
         if(!correctPassword){
             return res.status(401).json({
                 success: false,
-                message: 'Wrong password'
+                message: "Wrong password,password didn't match"
             });
         };
 
@@ -104,7 +113,10 @@ exports.login = async(req,res) => {
             secure:true,
             sameSite:"none",
         })
-        .send();
+        .status(200).json({
+            success: true,
+            message:"Login successfull",
+        });
     }
     catch(error){
         console.log(error)
@@ -122,7 +134,10 @@ exports.logout = async(req,res) => {
             secure:true,
             sameSite:"none",
         })
-        .send();
+        .status(200).json({
+            success: true,
+            message:"User logged out successfully"
+        });
         console.log("logged out");
     } 
     catch (error) {
@@ -157,6 +172,6 @@ exports.loggedIn = async(req,res) => {
         console.log(error);
         return res.status(500).json({
             auth:false,
-        })
+        });
     }
 }
