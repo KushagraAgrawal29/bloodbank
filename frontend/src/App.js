@@ -1,11 +1,14 @@
 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { Navbar } from './components/Main';
+
 
 function App() {
   return (
-    <div className="flex justify-center items-center text-4xl text-red-400">
-      Hello
-    </div>
+    <Routes>
+      <Route path='/' element={<Navbar/>}/>
+    </Routes>
   );
 }
 
