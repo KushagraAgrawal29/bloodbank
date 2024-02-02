@@ -30,4 +30,4 @@ const bloodDonationsSchema = new mongoose.Schema({
 });
 
 const BloodDonations = mongoose.model('Donations',bloodDonationsSchema);
-module.exports=BloodDonations;
+module.exports = BloodDonations;
