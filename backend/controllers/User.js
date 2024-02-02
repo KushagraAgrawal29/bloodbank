@@ -8,7 +8,6 @@ exports.getUser = async(req, res) => {
     const user = await User.find({
       _id: req.user,
     });
-
     console.log(user);
     return res.status(200).json({
       success: true,
@@ -25,7 +24,8 @@ exports.getUser = async(req, res) => {
   }
 };
 
-exports.createDonation = async (req, res) => {
+
+exports.createDonation = async(req, res) => {
   try {
     req.body.userId = req.user;
 
