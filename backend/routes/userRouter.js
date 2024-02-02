@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const { getUser,createDonation,createRequest,getDonations,getRequests,updateUser} = require("../controllers/User");
+const { getUser,createDonation,createRequest,getDonations,getRequests,updateUser, getBank} = require("../controllers/User");
 
 const { auth } = require("../middleware/auth");
 
-router.get("/", auth, getUser); 
+router.get("/getUser", auth, getUser);
 
-router.post("/donate",auth,createDonation);
+router.get("/getBank", auth, getBank);
+
+router.post("/donate", auth , createDonation);
 
 router.post("/request",auth,createRequest);
 
