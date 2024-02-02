@@ -99,7 +99,7 @@ exports.createRequest = async (req, res) => {
     const newRequest = new Request(req.body);
     const saved = await newRequest.save();
 
-    const newDataValue = await Bloodbank.update(
+    const newDataValue = await Bloodbank.updateOne(
       {
         _id: req.body.bankId,
       },
