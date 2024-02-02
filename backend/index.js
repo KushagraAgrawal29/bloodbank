@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-
 const cookieParser = require("cookie-parser");
 
 const app = express();
@@ -31,7 +30,7 @@ app.use(
 	})
 );
 
-//routes
+// //routes
 app.use("/api/v1/auth",authRoutes);
 app.use("/api/v1/bank",bankRoutes);
 app.use("/api/v1/camp",campRoutes);
