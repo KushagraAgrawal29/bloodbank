@@ -30,10 +30,12 @@ app.use("/user", require("./routers/userRouter"));
 app.use("/bank", require("./routers/bankRouter"));
 app.use("/camps", require("./routers/campRouter"));
 
-app.get("/",(req,res)=>{
-	res.send("hey there")
-	console.log("Hey there");
-})
+app.get("/",(req,res) => {
+    return res.status(200).json({
+        success:true,
+        message:"Your server is up and running...",
+    });
+});
 
 app.listen(port, () =>
 	console.log(`Server running at http://localhost:${port}`)
