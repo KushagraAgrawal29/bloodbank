@@ -15,7 +15,8 @@ app.use(express.json());
 app.use(
     cors({
         //making backend to entertain frontend requests
-        origin:"https://bloodbank-client.vercel.app",
+        origin:["https://bloodbank-client.vercel.app"],
+		methods: ["GET", "POST", "PUT", "DELETE"],
         credentials:true,
     })
 )
