@@ -84,7 +84,7 @@ const EditProfile = () => {
   };
 
   const fetchGeo = async () => {
-    if (latitude == user.latitude && longitude === user.longitude) return;
+    if (latitude === user.latitude && longitude === user.longitude) return;
     await navigator.geolocation.getCurrentPosition(
       (p) => {
         setLatitude(p.coords.latitude);

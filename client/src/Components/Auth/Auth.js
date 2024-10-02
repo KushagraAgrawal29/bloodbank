@@ -56,7 +56,7 @@ const Auth = (props) => {
   const signUp = async (e) => {
     e.preventDefault();
     var formData;
-    if (handle == "bank") {
+    if (handle === "bank") {
       formData = {
         name: name,
         hospital: hospital,
@@ -429,7 +429,7 @@ const Auth = (props) => {
                       </div>
                     </div>
 
-                    {handle == "bank" && (
+                    {handle === "bank" && (
                       <>
                         <br />
                         <div>
