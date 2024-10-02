@@ -8,7 +8,7 @@ function AuthContextProvider(props) {
   const [user, setUser] = useState([]);
 
   async function getLoggedIn() {
-    const loggedInRes = await axios.get("http://bloodbank-flame.vercel.app/auth/loggedIn", {
+    const loggedInRes = await axios.get("https://bloodbank-x7lu.vercel.app/auth/loggedIn", {
       withCredentials: true,
     });
     setLoggedIn(loggedInRes.data.auth);

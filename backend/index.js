@@ -13,7 +13,11 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(
-    cors()
+    cors({
+        //making backend to entertain frontend requests
+        origin:"https://bloodbank-client.vercel.app",
+        credentials:true,
+    })
 )
 
 
