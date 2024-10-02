@@ -25,7 +25,7 @@ const About = () => {
         <br />
         <a
           target="_blank"
-          href="https://github.com/ujjwalSk/"
+          href="https://github.com/KushagraAgrawal29"
           className="hover:drop-shadow-md hover:text-purple"
         >
           <i class="fa-brands fa-github"></i>
@@ -33,7 +33,7 @@ const About = () => {
         &nbsp;&nbsp;&nbsp;
         <a
           target="_blank"
-          href="https://www.linkedin.com/in/ujjwalsk/"
+          href="https://www.linkedin.com/in/kushagra-agrawal-3aa619259/"
           className="hover:drop-shadow-md hover:text-metal"
         >
           <i class="fa-brands fa-linkedin"></i>{" "}

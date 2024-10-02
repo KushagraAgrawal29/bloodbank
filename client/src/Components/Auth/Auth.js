@@ -40,7 +40,7 @@ const Auth = (props) => {
   }, [type]);
 
   useEffect(() => {
-    if (longitude == 0) return;
+    if (longitude === 0) return;
     mapboxgl.accessToken =
       "pk.eyJ1IjoiY29yb2JvcmkiLCJhIjoiY2s3Y3FyaWx0MDIwbTNpbnc4emxkdndrbiJ9.9KeSiPVeMK0rWvJmTE0lVA";
 
