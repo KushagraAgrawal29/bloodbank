@@ -98,7 +98,7 @@ const Auth = (props) => {
     }
 
     await axios
-      .post(`/auth/${handle}`, formData, { withCredentials: true })
+      .post(`https://bloodbank-x7lu.vercel.app/auth/${handle}`, formData)
       .then(
         async (res) => {},
         (err) => alert(err.response.data.errorMessage)
